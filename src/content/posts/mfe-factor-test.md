@@ -3,6 +3,7 @@ title: "MFE 组合视角下的因子有效性检验"
 published: 2026-07-21
 description: "传统因子检验（多空收益、IC检验）给出的是'绝对化'结论（如A因子好、B因子不好），但同一因子在不同基准股票池中表现可能完全不同。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

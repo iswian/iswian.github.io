@@ -3,6 +3,7 @@ title: "金融随机分析 (Stochastic Calculus for Finance)"
 published: 2026-07-21
 description: "定位：衍生品定价的数学基础，与 BS隐含波动率公式、波动率微笑对冲 等互补"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 

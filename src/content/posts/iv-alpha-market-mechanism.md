@@ -3,6 +3,7 @@ title: "IV Alpha 背后的市场机制"
 published: 2026-07-21
 description: "IV 因子之所以有 alpha，不是因为 IV 本身，而是因为 IV 的变动反映了市场参与者被迫交易的 flow。"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 

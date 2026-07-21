@@ -3,6 +3,7 @@ title: "PB-ROE 策略的因子化"
 published: 2026-07-21
 description: "| PB | 有一定选股能力，行业中性后显著提升（多空11.21%） |"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

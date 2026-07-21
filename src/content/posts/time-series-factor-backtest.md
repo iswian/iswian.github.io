@@ -3,6 +3,7 @@ title: "时序因子回测"
 published: 2026-07-21
 description: "与多因子选股横截面分组不同，时序因子回测针对单个品种，按信号值的时间序列分位数分组，构建多空组合。"
 category: "量化实操"
+study: asset-allocation
 tags: []
 ---
 

@@ -3,6 +3,7 @@ title: "极坐标与分域回归——PB-ROE 研究"
 published: 2026-07-21
 description: "用存货同比增长率（x轴）和单季营收同比增长率（y轴）构建极坐标系，极角映射为库存周期因子得分。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

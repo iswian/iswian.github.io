@@ -3,6 +3,7 @@ title: "期货展期收益"
 published: 2026-07-21
 description: "展期收益 = 持有期货多头时，合约到期展期（roll over）到下一合约，因贴水/升水结构而产生的收益/损失。"
 category: "量化实操"
+study: asset-allocation
 tags: []
 ---
 

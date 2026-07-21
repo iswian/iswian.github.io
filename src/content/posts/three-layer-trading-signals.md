@@ -3,6 +3,7 @@ title: "交易买卖信号三层框架"
 published: 2026-07-21
 description: "从多因子模型到实际买卖决策的三层结构：信号层  执行层  绩效层。"
 category: "择时"
+study: cta-timing
 tags: []
 ---
 

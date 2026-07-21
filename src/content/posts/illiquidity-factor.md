@@ -3,6 +3,7 @@ title: "K线最短路径非流动性因子（TS非流动性因子）"
 published: 2026-07-21
 description: "缺陷： 分子（收益率）是有向叠加，分母（成交量）是无向叠加。日内震荡行情下，有向叠加相互抵消导致严重低估非流动性。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

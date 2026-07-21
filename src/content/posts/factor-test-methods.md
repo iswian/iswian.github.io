@@ -3,6 +3,7 @@ title: "单因子有效性检验方法论"
 published: 2026-07-21
 description: "计算同一时刻的因子值与未来一段时间（通常一个月）收益的相关性。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

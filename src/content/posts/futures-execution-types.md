@@ -3,6 +3,7 @@ title: "期货成交类型：开仓、平仓、双开、双平、多换、空换
 published: 2026-07-21
 description: "期货逐笔成交明细（Tick数据）中，每笔交易根据买卖双方的动作组合被贴上类型标签，反映一笔成交背后的资金性质和持仓变化。"
 category: "量化实操"
+study: asset-allocation
 tags: []
 ---
 

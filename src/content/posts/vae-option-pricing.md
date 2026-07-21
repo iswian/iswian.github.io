@@ -3,6 +3,7 @@ title: "VAE期权定价：从市场隐含波动率曲面学习定价 (Ding, Lu &
 published: 2026-07-21
 description: "标题： Deep Learning Option Pricing with Market Implied Volatility Surfaces"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 

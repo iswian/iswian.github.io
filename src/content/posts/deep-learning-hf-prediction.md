@@ -3,6 +3,7 @@ title: "深度学习在高频股价预测中的应用：GASF图像编码 + ResNe
 published: 2026-07-21
 description: "高频交易数据（秒/毫秒级别）体量大、传统回归方法受限"
 category: "高频-微观结构"
+study: market-microstructure
 tags: []
 ---
 

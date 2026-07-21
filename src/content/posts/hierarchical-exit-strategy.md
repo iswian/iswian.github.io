@@ -3,6 +3,7 @@ title: "分层次出场策略框架"
 published: 2026-07-21
 description: "不要一上来就让 ML 直接学'什么时候平仓'这个问题太复杂、太容易过拟合。更稳的做法是分三层，逐层递进："
 category: "择时"
+study: cta-timing
 tags: []
 ---
 

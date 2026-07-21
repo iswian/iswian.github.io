@@ -3,6 +3,7 @@ title: "Barra CNE6 纯因子模型构建与因子合成"
 published: 2026-07-21
 description: "分层回测无法保证单一因子对其他因子的暴露中性，需要用纯因子模型（单一因子暴露为1，其他因子暴露为0）来客观反映因子的真实收益能力。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

@@ -3,6 +3,7 @@ title: "VPIN 订单流毒性指标（Flow Toxicity）"
 published: 2026-07-21
 description: "订单流毒性（Flow Toxicity）：当订单流对做市商产生逆向选择（adverse selection），而做市商可能并未意识到自己在亏钱提供流动性时，该订单流被称为'有毒的'。"
 category: "高频-微观结构"
+study: market-microstructure
 tags: []
 ---
 
