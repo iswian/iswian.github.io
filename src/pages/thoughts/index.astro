@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { ThoughtsView } from "@/components/thoughts-view"
+import { Footer } from "@/components/footer"
+import SiteHeader from "@/components/site-header.astro"
+import { getSortedThoughts, toThoughtMeta } from "@/lib/thoughts"
+
+const title = "偶得 | Serendipity"
+const description = "零散的想法与灵感"
+
+const allThoughts = await getSortedThoughts()
+const thoughtsWithContent = allThoughts.map((thought) => toThoughtMeta(thought))
+---
+
+<BaseLayout {title} {description}>
+  <div class="min-h-screen bg-background">
+    <SiteHeader />
+    <main class="pt-20">
+      <section id="thoughts-main" class="scroll-mt-24">
+        <ThoughtsView client:idle thoughts={thoughtsWithContent} />
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import Timeline from "@/components/Timeline.astro"
+import SiteHeader from "@/components/site-header.astro"
+import { Footer } from "@/components/footer"
+import { getSortedPosts } from "@/lib/posts"
+
+const title = "文章归档 | 时歌的博客"
+const description = "全部文章时间线"
+const posts = await getSortedPosts(true)
+
+// 转换为时间线所需的简化数据
+const timelineItems = posts.map((post) => ({
+  slug: post.slug,
+  title: post.data.title,
+  date: post.data.published.toISOString().slice(0, 10),
+  pinned: post.data.pinned ?? false,
+}))
+---
+
+<BaseLayout {title} {description}>
+  <div class="min-h-screen bg-background dark:bg-muted/30">
+    <SiteHeader />
+    <main class="pt-24">
+      <Timeline items={timelineItems} />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

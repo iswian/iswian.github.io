@@ -1,0 +1,104 @@
+---
+const apiBaseUrl = import.meta.env.PUBLIC_CWD_API_BASE_URL ?? ""
+const customCssUrl = import.meta.env.PUBLIC_CWD_CUSTOM_CSS_URL ?? ""
+const isEnabled = Boolean(apiBaseUrl)
+---
+
+{isEnabled && (
+  <section class="mt-8 pt-0 pb-12">
+    <div class="px-6">
+      <div class="max-w-3xl mx-auto">
+        <div
+          id="cwd-comments"
+          data-api-base-url={apiBaseUrl}
+          data-custom-css-url={customCssUrl}
+        ></div>
+        <script is:inline>
+          (() => {
+            const getTheme = () =>
+              document.documentElement.classList.contains("dark") ? "dark" : "light";
+
+            const loadScript = () => {
+              if (window.CWDComments) return Promise.resolve();
+
+              const existing = document.querySelector("script[data-cwd-widget]");
+              if (existing) {
+                if (existing.dataset.loaded === "true") return Promise.resolve();
+                return new Promise((resolve, reject) => {
+                  existing.addEventListener("load", resolve, { once: true });
+                  existing.addEventListener("error", () => {
+                    reject(new Error("Failed to load CWD widget"));
+                  }, { once: true });
+                });
+              }
+
+              return new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = "https://unpkg.com/cwd-widget@0.0.x/dist/cwd.js";
+                script.async = true;
+                script.dataset.cwdWidget = "true";
+                script.onload = () => {
+                  script.dataset.loaded = "true";
+                  resolve();
+                };
+                script.onerror = () => reject(new Error("Failed to load CWD widget"));
+                document.head.appendChild(script);
+              });
+            };
+
+            const mountComments = async () => {
+              const container = document.querySelector("#cwd-comments");
+              if (!container) return;
+              const apiBaseUrl = container.dataset.apiBaseUrl;
+              if (!apiBaseUrl) return;
+              const customCssUrl = container.dataset.customCssUrl;
+
+              await loadScript();
+
+              const config = {
+                el: container,
+                apiBaseUrl,
+                theme: getTheme(),
+              };
+              if (customCssUrl) {
+                config.customCssUrl = customCssUrl;
+              }
+
+              if (container._cwdInstance) {
+                if (typeof container._cwdInstance.updateConfig === "function") {
+                  container._cwdInstance.updateConfig(config);
+                }
+                return;
+              }
+
+              const instance = new window.CWDComments(config);
+              if (typeof instance.mount === "function") {
+                instance.mount();
+              }
+              container._cwdInstance = instance;
+            };
+
+            const updateTheme = () => {
+              const container = document.querySelector("#cwd-comments");
+              const instance = container?._cwdInstance;
+              if (!instance?.updateConfig) return;
+              instance.updateConfig({ theme: getTheme() });
+            };
+
+            const observer = new MutationObserver((mutations) => {
+              for (const mutation of mutations) {
+                if (mutation.attributeName === "class") {
+                  updateTheme();
+                }
+              }
+            });
+            observer.observe(document.documentElement, { attributes: true });
+
+            mountComments();
+            document.addEventListener("astro:page-load", mountComments);
+          })();
+        </script>
+      </div>
+    </div>
+  </section>
+)}
