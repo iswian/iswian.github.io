@@ -3,6 +3,7 @@ title: "基本面分析基础"
 published: 2026-07-21
 description: "| 报表 | 核心内容 | 量化价值 |"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

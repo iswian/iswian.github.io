@@ -3,6 +3,7 @@ title: "技术分析基础与指标"
 published: 2026-07-21
 description: "| 指标 | 说明 | 操作要点 |"
 category: "择时"
+study: cta-timing
 tags: []
 ---
 

@@ -3,6 +3,7 @@ title: "中证东方红红利低波指数 (921446.CSI)"
 published: 2026-07-21
 description: "指数代码： 921446.CSI"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

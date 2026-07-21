@@ -3,6 +3,7 @@ title: "波动率微笑中静态对冲奇异期权"
 published: 2026-07-21
 description: "在波动率微笑/倾斜的市场中，如何用常规欧式期权（香草期权）来静态复制和定价奇异期权（主要是障碍期权）？"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 

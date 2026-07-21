@@ -3,6 +3,7 @@ title: "高频因子手册"
 published: 2026-07-21
 description: "以 Level2 数据为基础构建的 79 个高频价量因子，分 8 大类。测试区间 2013.012023.12，全市场/沪深300/中证500/中证1000 多个股票池，周度和月度双频调仓。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

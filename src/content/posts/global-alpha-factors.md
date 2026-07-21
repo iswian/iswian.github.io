@@ -3,6 +3,7 @@ title: "世界量化经典Alpha因子公式"
 published: 2026-07-21
 description: "解释：当前股价与6日前变化百分比  成交量"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

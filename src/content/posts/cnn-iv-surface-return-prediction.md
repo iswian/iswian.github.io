@@ -3,6 +3,7 @@ title: "CNN + IV Surface 收益预测"
 published: 2026-07-21
 description: "用 CNN 直接从期权隐含波动率(IV)曲面上提取非线性特征，预测股票截面收益。"
 category: "投资组合"
+study: portfolio-optimization
 tags: []
 ---
 

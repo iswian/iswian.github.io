@@ -3,6 +3,7 @@ title: "端到端投资组合构建 (End-to-End Portfolio Construction)"
 published: 2026-07-21
 description: "传统'先预测，再优化'(predict-then-optimize) 的两阶段框架存在根本性缺陷：预测模型优化的是预测误差，而非最终的投资决策质量。端到端(E2E)方法将预测层和决策层联合训练，使模型参数直接优化最终的任务损失(task l"
 category: "投资组合"
+study: portfolio-optimization
 tags: []
 ---
 

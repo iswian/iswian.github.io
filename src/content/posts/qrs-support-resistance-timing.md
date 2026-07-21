@@ -3,6 +3,7 @@ title: "QRS 阻力支撑相对强度择时指标"
 published: 2026-07-21
 description: "将阻力位与支撑位视为随机变量，通过比较两者的强度（方差的倒数） 来判定市场方向："
 category: "择时"
+study: cta-timing
 tags: []
 ---
 

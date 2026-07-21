@@ -3,6 +3,7 @@ title: "IV Surface / 波动率机器学习项目复盘"
 published: 2026-07-21
 description: "用铜期货相关的期权隐含波动率信息，构造一个可以预测短周期价格行为的机器学习信号。"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 

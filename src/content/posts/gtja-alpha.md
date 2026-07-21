@@ -3,6 +3,7 @@ title: "国泰君安短周期交易型多因子选股体系"
 published: 2026-07-21
 description: "在 A 股市场，交易型阿尔法收益的空间远大于传统价值型阿尔法收益，稳定性也更强。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

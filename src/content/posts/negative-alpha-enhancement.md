@@ -3,6 +3,7 @@ title: "负面 Alpha 指数增强策略"
 published: 2026-07-21
 description: "即使多头组没有超额收益或因子没有单调性，只要空头组有稳定的负超额收益，就可以通过剔除空头组来获得Alpha。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

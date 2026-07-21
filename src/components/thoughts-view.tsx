@@ -180,10 +180,6 @@ function QuietMode({
         </div>
         <div className="text-center mb-10">
           <div
-            className="font-serif italic text-[11px] text-muted-foreground uppercase"
-            style={{ letterSpacing: 5 }}
-          </div>
-          <div
             className="mt-3 font-mono text-[12px] text-muted-foreground"
             style={{ letterSpacing: 2 }}
           >

@@ -3,6 +3,7 @@ title: "CTA策略分类汇总"
 published: 2026-07-21
 description: "| 策略名称 | 核心逻辑 | 特点 |"
 category: "择时"
+study: cta-timing
 tags: []
 ---
 

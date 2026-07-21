@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react"
 import { cn } from "@/lib/utils"
 import type { StudyData as Study } from "@/lib/studies"
-import { StatusMark } from "@/components/studies-shared"
 
 type Mode = "index" | "timeline"
 
@@ -101,7 +100,6 @@ function IndexItem({ study }: { study: Study }) {
           </div>
         </div>
         <div className="flex flex-row items-center gap-2.5 col-start-2 row-start-2 md:flex-col md:items-end md:gap-1 md:col-start-3 md:row-start-1 study-meta-right">
-          <StatusMark status={study.status} />
           <span className="font-mono text-[10.5px] text-muted-foreground/70">{study.updated}</span>
         </div>
       </a>
@@ -303,7 +301,6 @@ function StudyTimelineCard({
       </div>
       <div className="flex justify-between items-center text-[10.5px] text-muted-foreground font-mono">
         <span>{formatSpan(study)}</span>
-        <StatusMark status={study.status} />
       </div>
     </div>
   )
@@ -511,7 +508,6 @@ export function StudiesList({ studies }: { studies: Study[] }) {
   }, [hydrated, mode])
 
   const total = studies.length
-  const inProgress = studies.filter((s) => s.status === "在读").length
   const totalResources = studies.reduce(
     (acc, s) => acc + Object.values(s.counts).reduce((a, b) => a + (b ?? 0), 0),
     0,
@@ -553,7 +549,6 @@ export function StudiesList({ studies }: { studies: Study[] }) {
         {/* 元数据条 */}
         <div className="flex items-baseline gap-x-6 gap-y-2 sm:gap-8 flex-wrap pb-[22px] mb-9 border-b border-border">
           <Stat n={total} label="个专题" />
-          <Stat n={inProgress} label="在读" />
           <Stat n={totalResources} label="件资源" />
           <span
             className="hidden sm:inline-block ml-auto text-[11px] text-muted-foreground/80 italic uppercase"

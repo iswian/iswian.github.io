@@ -3,6 +3,7 @@ title: "Schadner(2026) 显式 BS-IV 公式"
 published: 2026-07-21
 description: "这篇论文把 BS implied volatility 的反解，从'对 volatility 做数值找根'改写成了'逆高斯分布的分位数反演问题'。"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 

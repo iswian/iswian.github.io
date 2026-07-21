@@ -3,6 +3,7 @@ title: "稳健投资组合优化 (Robust Portfolio Optimization)"
 published: 2026-07-21
 description: "来源：Yin, Perchet & Soup (2021), Quantitative Finance，BNP Paribas Asset Management"
 category: "投资组合"
+study: portfolio-optimization
 tags: []
 ---
 

@@ -3,6 +3,7 @@ title: "华泰多因子模型体系"
 published: 2026-07-21
 description: "主动定量管理本质是统计套利，关注点是因子（共性）而非股票（个性）。"
 category: "因子选股"
+study: factor-modeling
 tags: []
 ---
 

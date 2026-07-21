@@ -3,6 +3,7 @@ title: "DCA定投与一次性投资"
 published: 2026-07-21
 description: "优点：市场上涨时全部资金都能获利，潜在回报更高"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 

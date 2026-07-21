@@ -3,6 +3,7 @@ title: "A股 E2E DRO 投资组合（FYP 项目）"
 published: 2026-07-21
 description: "将 Costa & Iyengar (2023) 的 端到端分布鲁棒组合优化 (E2E DRO) 框架复现到 A 股市场，验证其在政策驱动、非平稳特征明显的中国市场中的有效性。"
 category: "投资组合"
+study: portfolio-optimization
 tags: []
 ---
 

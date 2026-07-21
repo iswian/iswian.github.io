@@ -3,6 +3,7 @@ title: "杠杆ETF波动率衰减"
 published: 2026-07-21
 description: "杠杆ETF（Leveraged ETF）通过金融衍生工具提供标的指数每日收益的特定倍数（如2倍或3倍）。由于每日再平衡机制，长期持有会产生显著的波动率衰减（Volatility Decay）效应。"
 category: "衍生品-期权"
+study: derivatives-pricing
 tags: []
 ---
 
