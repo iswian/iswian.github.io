@@ -35,7 +35,7 @@ export default function AboutPage() {
                 <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
                   <span className="flex items-center gap-1.5">
                     <MapPin className="w-4 h-4" />
-                    中国
+                    Shanghai, China
                   </span>
                 </div>
 
