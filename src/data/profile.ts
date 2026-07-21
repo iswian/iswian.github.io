@@ -25,7 +25,7 @@ export const profile: {
 } = {
   name: "抹茶iswian",
   bio: "探索技术与生活的交汇点",
-  avatar: "/avatar.webp",
+  avatar: "/avatar.jpg",
   links: [
     {
       type: "github",
