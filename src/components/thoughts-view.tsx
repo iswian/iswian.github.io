@@ -229,8 +229,8 @@ function QuietMode({
         <div
           className="font-serif text-foreground thoughts-quiet-body"
           style={{
-            fontSize: 18,
-            lineHeight: 2.0,
+            fontSize: 16,
+            lineHeight: 1.85,
             textAlign: "left",
           }}
           dangerouslySetInnerHTML={{ __html: t.content }}
