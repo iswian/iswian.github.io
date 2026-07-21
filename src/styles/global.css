@@ -664,7 +664,7 @@ a.card-github:hover .github-logo {
   animation: hero-cursor-blink 0.9s ease-in-out infinite;
 }
 
-/* ——— 偶得 (thoughts) view ——— */
+/* ——— 碎碎念 (thoughts) view ——— */
 @keyframes thoughts-fade-up {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: none; }
