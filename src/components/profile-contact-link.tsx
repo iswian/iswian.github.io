@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Music } from "lucide-react"
+import { Github, Linkedin, Music } from "lucide-react"
 import { IconBrandWechat } from "@tabler/icons-react"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
@@ -12,6 +12,7 @@ const iconMap = {
   qq: QqIcon,
   music: Music,
   github: Github,
+  linkedin: Linkedin,
   wechat: IconBrandWechat,
 }
 
