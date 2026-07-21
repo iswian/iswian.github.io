@@ -8,9 +8,13 @@ import { ProfileContactLink } from "@/components/profile-contact-link"
 import lastCommitData from "@/data/last-commit.json"
 
 function daysAgo(dateStr: string): number {
-  const then = new Date(dateStr)
+  // Use local timezone to avoid UTC offset issues
+  const [y, m, d] = dateStr.split("-").map(Number)
+  const then = new Date(y, m - 1, d)
   const now = new Date()
-  return Math.floor((now.getTime() - then.getTime()) / (1000 * 60 * 60 * 24))
+  const utcThen = Date.UTC(y, m - 1, d)
+  const utcNow = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())
+  return Math.floor((utcNow - utcThen) / (1000 * 60 * 60 * 24))
 }
 
 interface SidebarProps {
