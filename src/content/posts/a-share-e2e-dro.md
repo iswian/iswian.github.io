@@ -43,23 +43,23 @@ tags: []
 
 目标函数：
 
-$$z^*_t = \arg\min_{z \in Z} \max_{p \in P(δ)} f_ϵ(z, p) - γ·ŷ^⊤_t z$$
+$$z^*_t = \arg\min_{z \in Z} \max_{p \in P(\delta)} f_{\epsilon}(z, p) - \gamma \cdot \hat{y}^{\top}_t z$$
 
-- $Z = \{z \ge 0, 1^⊤z = 1\}$ — 做多+满仓约束
-- $f_ϵ(z, p)$ — 基于预测误差的 CVaR 风险度量（pinball loss）
-- $P(δ)$ — ϕ-divergence 模糊集（TV / Hellinger）
-- $γ$ — 风险偏好参数（端到端学习）
-- $δ$ — 鲁棒性半径（端到端学习）
+- $Z = \{z \ge 0, 1^{\top} z = 1\}$ — 做多+满仓约束
+- $f_{\epsilon}(z, p)$ — 基于预测误差的 CVaR 风险度量（pinball loss）
+- $P(\delta)$ — ϕ-divergence 模糊集（TV / Hellinger）
+- $\gamma$ — 风险偏好参数（端到端学习）
+- $\delta$ — 鲁棒性半径（端到端学习）
 
 ### 梯度传播
 
 三个参数集联合学习：
 
-$$\frac{∂l_{task}}{∂θ} = \frac{∂l}{∂z^*}·\frac{∂z^*}{∂ŷ}·\frac{∂ŷ}{∂θ} + \frac{∂l}{∂z^*}·\frac{∂z^*}{∂ϵ}·\frac{∂ϵ}{∂θ}$$
+$$\frac{\partial l_{task}}{\partial \theta} = \frac{\partial l}{\partial z^*} \cdot \frac{\partial z^*}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial \theta} + \frac{\partial l}{\partial z^*} \cdot \frac{\partial z^*}{\partial \epsilon} \cdot \frac{\partial \epsilon}{\partial \theta}$$
 
-$$\frac{∂l_{task}}{∂γ} = \frac{∂l}{∂z^*}·\frac{∂z^*}{∂γ}$$
+$$\frac{\partial l_{task}}{\partial \gamma} = \frac{\partial l}{\partial z^*} \cdot \frac{\partial z^*}{\partial \gamma}$$
 
-$$\frac{∂l_{task}}{∂δ} = \frac{∂l}{∂z^*}·\frac{∂z^*}{∂δ}$$
+$$\frac{\partial l_{task}}{\partial \delta} = \frac{\partial l}{\partial z^*} \cdot \frac{\partial z^*}{\partial \delta}$$
 
 通过 CvxpyLayer 实现可微优化层，自动微分计算梯度。
 

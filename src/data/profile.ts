@@ -24,7 +24,7 @@ export const profile: {
   links: ProfileLink[]
 } = {
   name: "抹茶iswian",
-  bio: "探索技术与生活的交汇点",
+  bio: "量化韭菜，但很努力",
   avatar: "/avatar.jpg",
   links: [
     {
