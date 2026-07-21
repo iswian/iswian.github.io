@@ -1,11 +1,9 @@
 ---
 title: "中证东方红红利低波指数 (921446.CSI)"
 published: 2026-07-21
-description: "> 来源: 中证指数有限公司官网数据，2025.08 最新"
+description: "指数代码： 921446.CSI"
 category: "因子选股"
-tags:
-  - 红利
-  - Smart Beta
+tags: []
 ---
 
 > **来源**: 中证指数有限公司官网数据，2025.08 最新

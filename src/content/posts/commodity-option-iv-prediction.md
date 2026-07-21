@@ -1,14 +1,9 @@
 ---
 title: "商品期权隐含波动率预测期货收益（论文研究框架）"
 published: 2026-07-21
-description: "> 对应论文：*Commodity Option Implied Volatilities and the Expected Futures Returns*"
+description: "商品期权的隐含波动率可以横截面地预测期货未来收益：同一天不同商品中，隐含波动率相对更高的品种未来收益更差，反之更好。"
 category: "衍生品-期权"
-tags:
-  - 波动率
-  - 期权
-  - 衍生品
-  - 隐含波动率
-  - BS模型
+tags: []
 ---
 
 > 对应论文：*Commodity Option Implied Volatilities and the Expected Futures Returns*

@@ -1,11 +1,9 @@
 ---
 title: "金融随机分析 (Stochastic Calculus for Finance)"
 published: 2026-07-21
-description: "> 来源：Peng Jin，讲义，涵盖现代概率基础、信息与条件、Itô积分三大章"
+description: "定位：衍生品定价的数学基础，与 BS隐含波动率公式、波动率微笑对冲 等互补"
 category: "衍生品-期权"
-tags:
-  - 随机分析
-  - 数学
+tags: []
 ---
 
 > **来源**：Peng Jin，讲义，涵盖现代概率基础、信息与条件、Itô积分三大章

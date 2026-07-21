@@ -1,10 +1,9 @@
 ---
 title: "Quantum-HRL Agent: CryptoWealthGuard"
 published: 2026-07-21
-description: "> 来源: EBIS2013 — Fundamentals of Digital Economy and Fintech, Group G, Dec 2025"
+description: "放弃价格预测范式，转向生存优先的决策框架。核心洞察：在高度对抗性的加密货币市场中，价格预测模型因市场非平稳性和鲸鱼操纵而迅速失效，因此最优策略不是'预测涨跌'，而是'学会在任何市场状态下生存并获得正收益'。"
 category: "投资组合"
-tags:
-
+tags: []
 ---
 
 > **来源**: EBIS2013 — Fundamentals of Digital Economy and Fintech, Group G, Dec 2025  

@@ -1,11 +1,9 @@
 ---
 title: "SVM + 基数约束组合优化"
 published: 2026-07-21
-description: "来源：Islip, Kwon & Kim (2024), *European Journal of Operational Research*"
+description: "来源：Islip, Kwon & Kim (2024), European Journal of Operational Research"
 category: "投资组合"
-tags:
-  - SVM
-  - 机器学习
+tags: []
 ---
 
 **来源**：Islip, Kwon & Kim (2024), *European Journal of Operational Research*

@@ -1,10 +1,9 @@
 ---
 title: "基本面分析基础"
 published: 2026-07-21
-description: "> 来源：Obsidian 笔记 Quant/基本面.md"
+description: "| 报表 | 核心内容 | 量化价值 |"
 category: "因子选股"
-tags:
-
+tags: []
 ---
 
 > 来源：Obsidian 笔记 `Quant/基本面.md`

@@ -1,12 +1,9 @@
 ---
 title: "最优高频做市策略：限价单与市价单的随机控制"
 published: 2026-07-21
-description: "> Source: Guilbaud & Pham (2011), "Optimal high frequency trading with limit and market orders", arXiv:1106.5040v1"
+description: "高频做市商如何同时使用限价单（提供流动性）和市价单（消耗流动性）来最优化其策略，在控制库存风险的同时最大化收益。"
 category: "高频-微观结构"
-tags:
-  - 高频交易
-  - 微观结构
-  - 做市
+tags: []
 ---
 
 > Source: Guilbaud & Pham (2011), "Optimal high frequency trading with limit and market orders", arXiv:1106.5040v1

@@ -1,11 +1,9 @@
 ---
 title: "CNN + IV Surface 收益预测"
 published: 2026-07-21
-description: "> Kelly, Kuznetsov, Malamud & Xu (2023) — Deep Learning from Implied Volatility Surfaces"
+description: "用 CNN 直接从期权隐含波动率(IV)曲面上提取非线性特征，预测股票截面收益。"
 category: "投资组合"
-tags:
-  - 深度学习
-  - 神经网络
+tags: []
 ---
 
 > Kelly, Kuznetsov, Malamud & Xu (2023) — Deep Learning from Implied Volatility Surfaces

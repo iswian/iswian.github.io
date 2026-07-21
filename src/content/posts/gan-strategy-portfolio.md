@@ -1,11 +1,9 @@
 ---
 title: "GAN用于交易策略微调与组合"
 published: 2026-07-21
-description: "来源：Koshiyama, Firoozye & Treleaven (2021), *Quantitative Finance*"
+description: "来源：Koshiyama, Firoozye & Treleaven (2021), Quantitative Finance"
 category: "投资组合"
-tags:
-  - GAN
-  - 深度学习
+tags: []
 ---
 
 **来源**：Koshiyama, Firoozye & Treleaven (2021), *Quantitative Finance*

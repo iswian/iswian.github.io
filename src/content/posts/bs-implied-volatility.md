@@ -1,13 +1,9 @@
 ---
 title: "Black-Scholes 隐含波动率的显式公式"
 published: 2026-07-21
-description: "> Source: Schadner, W. (2026), "An Explicit Solution to Black–Scholes Implied Volatility", arXiv:2604.24480v2"
+description: "首次给出 Black-Scholes 隐含波动率的显式公式，解决了期权定价中一个 50 年历史的问题。"
 category: "衍生品-期权"
-tags:
-  - 波动率
-  - 期权
-  - 隐含波动率
-  - BS模型
+tags: []
 ---
 
 > Source: Schadner, W. (2026), "An Explicit Solution to Black–Scholes Implied Volatility", arXiv:2604.24480v2

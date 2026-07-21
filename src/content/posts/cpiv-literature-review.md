@@ -1,10 +1,9 @@
 ---
 title: "CPIV 相关文献综述"
 published: 2026-07-21
-description: "> 来源：Obsidian 笔记 期货/111.md 中的文献推荐整理"
+description: "不再单纯证明 CPIV 有效，而是研究 IV spread 预测未来收益背后的跳跃风险和美式期权提前执行溢价"
 category: "衍生品-期权"
-tags:
-
+tags: []
 ---
 
 > 来源：Obsidian 笔记 `期货/111.md` 中的文献推荐整理
