@@ -3,11 +3,7 @@ title: "SVI波动率微笑参数化模型"
 published: 2026-07-21
 description: "SVI（Stochastic Volatility Inspired）由 Gatheral 提出，是目前最流行的隐含波动率微笑参数化方法之一。"
 category: "衍生品-期权"
-tags:
-  - 波动率
-  - 期权
-  - SVI
-  - 波动率曲面
+tags: []
 ---
 
 SVI（Stochastic Volatility Inspired）由 Gatheral 提出，是目前最流行的隐含波动率微笑参数化方法之一。

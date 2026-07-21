@@ -1,10 +1,9 @@
 ---
 title: "📚 知识库索引"
 published: 2026-07-21
-description: "- QRS阻力支撑 — 中金公司量化择时框架，基于阻力支撑强度比较的择时技术指标"
+description: "QRS阻力支撑  中金公司量化择时框架，基于阻力支撑强度比较的择时技术指标"
 category: "综合"
-tags:
-
+tags: []
 ---
 
 ## 📊 择时

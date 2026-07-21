@@ -1,13 +1,9 @@
 ---
 title: "CTA策略分类汇总"
 published: 2026-07-21
-description: "CTA策略分类汇总：经典突破、趋势跟踪、反转、套利等策略的核心逻辑与特点"
+description: "| 策略名称 | 核心逻辑 | 特点 |"
 category: "择时"
-tags:
-  - CTA
-  - 突破策略
-  - 趋势跟踪
-  - 反转
+tags: []
 ---
 
 ## 经典突破策略

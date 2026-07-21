@@ -1,12 +1,9 @@
 ---
 title: "技术分析基础与指标"
 published: 2026-07-21
-description: "技术分析基础与常用指标：趋势类、震荡类、成交量类指标的操作要点"
+description: "| 指标 | 说明 | 操作要点 |"
 category: "择时"
-tags:
-  - 技术分析
-  - 技术指标
-  - 趋势
+tags: []
 ---
 
 > 来源：Obsidian 笔记 `Quant/技术面.md`
