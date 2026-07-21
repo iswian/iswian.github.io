@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from "react"
-import { Github, Music, Rss } from "lucide-react"
+import { Github, Linkedin, Music, Rss } from "lucide-react"
 import { profile, type ExternalProfileLink, type ExternalProfileLinkType } from "@/data/profile"
 import { QqIcon } from "@/components/icons/qq-icon"
 
@@ -7,6 +7,7 @@ const iconMap: Record<ExternalProfileLinkType, ComponentType<SVGProps<SVGSVGElem
   qq: QqIcon,
   music: Music,
   github: Github,
+  linkedin: Linkedin,
 }
 
 export function Footer() {

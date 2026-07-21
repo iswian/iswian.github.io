@@ -1,4 +1,4 @@
-export type ExternalProfileLinkType = "qq" | "music" | "github"
+export type ExternalProfileLinkType = "qq" | "music" | "github" | "linkedin"
 export type ProfileLinkType = ExternalProfileLinkType | "wechat"
 
 export interface ExternalProfileLink {
@@ -31,6 +31,11 @@ export const profile: {
       type: "github",
       name: "GitHub",
       url: "https://github.com/iswian",
+    },
+    {
+      type: "linkedin",
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/yixuan-tang-a8b08a39a/",
     },
   ],
 }
