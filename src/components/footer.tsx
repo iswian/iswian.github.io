@@ -94,7 +94,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-border/50 grid gap-4 md:grid-cols-3">
-          <p className="text-muted-foreground text-sm">© 2025 iswian. All rights reserved.</p>
+          <p className="text-muted-foreground text-sm">© 2026 iswian. All rights reserved.</p>
           <a
             href="https://github.com/iswian/iswian.github.io"
             target="_blank"
