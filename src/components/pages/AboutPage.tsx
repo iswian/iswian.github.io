@@ -67,7 +67,8 @@ export default function AboutPage() {
               prose-li:marker:text-primary prose-li:my-1.5"
             >
               <blockquote>
-                探索技术与生活的交汇点
+                喘口气 天空变得接近 海变得稀薄<br/>
+                我不曾退缩
               </blockquote>
               <p>
                 你好，我是 iswian。
