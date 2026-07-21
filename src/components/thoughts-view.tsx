@@ -208,11 +208,11 @@ function QuietMode({
           <h1
             className="font-serif text-center text-foreground"
             style={{
-              fontSize: "clamp(32px, 6vw, 52px)",
+              fontSize: "clamp(20px, 4vw, 28px)",
               fontWeight: 500,
-              margin: "0 0 60px",
-              letterSpacing: 4,
-              lineHeight: 1.3,
+              margin: "0 0 40px",
+              letterSpacing: 2,
+              lineHeight: 1.4,
             }}
           >
             {t.title}
