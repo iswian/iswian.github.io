@@ -1,10 +1,17 @@
 "use client"
 
-import { useState, type ReactNode } from "react"
+import { useState, useEffect, type ReactNode } from "react"
 import { cn } from "@/lib/utils"
-import { Calendar } from "lucide-react"
+import { Clock } from "lucide-react"
 import { profile } from "@/data/profile"
 import { ProfileContactLink } from "@/components/profile-contact-link"
+import lastCommitData from "@/data/last-commit.json"
+
+function daysAgo(dateStr: string): number {
+  const then = new Date(dateStr)
+  const now = new Date()
+  return Math.floor((now.getTime() - then.getTime()) / (1000 * 60 * 60 * 24))
+}
 
 interface SidebarProps {
   categories: { id: string; name: string; count: number }[]
@@ -68,11 +75,11 @@ export function Sidebar({
           })}
         </div>
 
-        {/* Quick Stats */}
+        {/* Last active */}
         <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border/50">
           <span className="flex items-center gap-1">
-            <Calendar className="w-3 h-3" />
-            正在空降：超级地球
+            <Clock className="w-3 h-3" />
+            博主在 {daysAgo(lastCommitData.lastCommitDate)} 天前来过
           </span>
         </div>
       </div>
