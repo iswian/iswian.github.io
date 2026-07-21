@@ -43,7 +43,6 @@ export function Footer() {
                 { name: "时间线", href: "/timeline/" },
                 { name: "专题", href: "/studies/" },
                 { name: "关于", href: "/about/" },
-                { name: "开往", href: "https://www.travellings.cn/go.html", external: true },
               ].map((item) => (
                 <a
                   key={item.name}
