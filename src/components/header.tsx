@@ -10,7 +10,7 @@ const navItems: { name: string; href: string; external?: boolean }[] = [
   { name: "首页", href: "/#home-main" },
   { name: "时间线", href: "/timeline/" },
   { name: "偶得", href: "/thoughts/" },
-  { name: "书架", href: "/bookshelf/" },
+  { name: "专题", href: "/studies/" },
   { name: "友链", href: "/friends/" },
   { name: "关于", href: "/about/" },
   { name: "开往", href: "https://www.travellings.cn/go.html", external: true },
@@ -65,7 +65,7 @@ export function Header() {
             <div className="w-8 h-8 rounded-full overflow-hidden border border-primary/20 bg-secondary transition-transform duration-300 group-hover:scale-105">
               <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover" />
             </div>
-            <span className="text-foreground font-medium tracking-tight hidden sm:block">时歌的博客</span>
+            <span className="text-foreground font-medium tracking-tight hidden sm:block">抹茶iswian的博客</span>
           </a>
 
           {/* Center: Navigation */}
