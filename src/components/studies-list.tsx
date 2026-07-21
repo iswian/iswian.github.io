@@ -152,6 +152,100 @@ function formatSpan(study: Study): string {
   return `${start} → ${end}`
 }
 
+function CollapsedTimelineView({ studies }: { studies: Study[] }) {
+  const periodLabel = studies[0]?.started ?? ""
+
+  return (
+    <div className="studies-cross-fade mx-auto" style={{ maxWidth: 980, width: "100%" }}>
+      <div className="mb-8 flex justify-center">
+        <span
+          className="inline-flex items-center rounded-full border border-border bg-background px-4 py-1.5 text-[11px] text-muted-foreground font-mono"
+          style={{ letterSpacing: 0.6 }}
+        >
+          {periodLabel}
+        </span>
+      </div>
+
+      <div className="relative mx-auto max-w-[920px]">
+        <div
+          aria-hidden="true"
+          className="absolute hidden md:block"
+          style={{
+            left: "50%",
+            top: 0,
+            bottom: 0,
+            width: 1,
+            background: "var(--border)",
+            transform: "translateX(-50%)",
+          }}
+        />
+
+        <div className="flex flex-col gap-6">
+          {studies.map((study, index) => {
+            const rightSide = index % 2 === 0
+            const isActive = study.status === "在读"
+
+            return (
+              <div
+                key={study.id}
+                className="grid items-center"
+                style={{ gridTemplateColumns: "1fr" }}
+              >
+                <div
+                  className="hidden md:grid items-center"
+                  style={{ gridTemplateColumns: "1fr 56px 1fr" }}
+                >
+                  <div className={rightSide ? "" : "justify-self-end pr-6"}>
+                    {!rightSide ? (
+                      <a
+                        href={detailHref(study)}
+                        className="group block max-w-[420px] no-underline text-inherit"
+                      >
+                        <StudyTimelineCard study={study} compact />
+                      </a>
+                    ) : null}
+                  </div>
+
+                  <div className="relative flex h-full items-center justify-center">
+                    <div
+                      aria-hidden="true"
+                      className="rounded-full"
+                      style={{
+                        width: 12,
+                        height: 12,
+                        background: isActive ? "var(--primary)" : "var(--background)",
+                        border: `2px solid ${isActive ? "var(--primary)" : "var(--muted-foreground)"}`,
+                        zIndex: 1,
+                      }}
+                    />
+                  </div>
+
+                  <div className={rightSide ? "pl-6" : ""}>
+                    {rightSide ? (
+                      <a
+                        href={detailHref(study)}
+                        className="group block max-w-[420px] no-underline text-inherit"
+                      >
+                        <StudyTimelineCard study={study} compact />
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+
+                <div className="md:hidden">
+                  <a href={detailHref(study)} className="group block no-underline text-inherit">
+                    <StudyTimelineCard study={study} compact />
+                  </a>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 type Placed = {
   study: Study
   xStartPct: number
@@ -166,6 +260,55 @@ const LANE_GAP = 14
 const AXIS_PAD = 32
 const MIN_GAP_PCT = 1.2 // 同一 lane/side 上两张卡之间至少留 1.2% 间隙
 
+function StudyTimelineCard({
+  study,
+  compact = false,
+}: {
+  study: Study
+  compact?: boolean
+}) {
+  const isActive = study.status === "在读"
+
+  return (
+    <div
+      className="block border border-border bg-card/60 transition-colors group-hover:bg-muted/70 group-focus-visible:bg-muted/70"
+      style={{
+        minHeight: compact ? 120 : CARD_H,
+        padding: "12px 18px 12px 16px",
+        borderLeft: `2px solid ${isActive ? "var(--primary)" : "var(--border)"}`,
+        borderRadius: 2,
+        boxSizing: "border-box",
+        overflow: "hidden",
+      }}
+    >
+      <div className="flex items-center gap-2 mb-1.5">
+        <span
+          className="text-[10px] italic text-muted-foreground/80 whitespace-nowrap"
+          style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "0.16em" }}
+        >
+          № {study.no} · {study.field}
+        </span>
+      </div>
+      <h3
+        className="font-serif-cn text-[15px] font-semibold text-foreground m-0 mb-1.5 leading-[1.35]"
+        style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+      >
+        {study.title}
+      </h3>
+      <div
+        className="text-[11px] text-muted-foreground font-serif-cn italic leading-[1.5] mb-2"
+        style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+      >
+        {study.epigraph}
+      </div>
+      <div className="flex justify-between items-center text-[10.5px] text-muted-foreground font-mono">
+        <span>{formatSpan(study)}</span>
+        <StatusMark status={study.status} />
+      </div>
+    </div>
+  )
+}
+
 function TimelineView({ studies }: { studies: Study[] }) {
   const sorted = useMemo(
     () => [...studies].sort((a, b) => parseMonth(a.started) - parseMonth(b.started)),
@@ -177,6 +320,11 @@ function TimelineView({ studies }: { studies: Study[] }) {
   const minP = Math.min(...startPositions) - 1
   const maxP = Math.max(...endPositions) + 1
   const range = Math.max(1, maxP - minP)
+  const collapsedRange = range <= 2 || new Set(startPositions).size <= 1
+
+  if (collapsedRange) {
+    return <CollapsedTimelineView studies={sorted} />
+  }
 
   const positionFor = (p: number): number => ((p - minP) / range) * 100
 
@@ -337,46 +485,11 @@ function TimelineNode({
           left: `calc(${xStartPct}% - ${LEFT_INSET}px)`,
           width: `calc(${widthPct}% + ${LEFT_INSET}px)`,
           top: axisTop + cardTop,
-          height: CARD_H,
-          padding: "12px 18px 12px 16px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          background: hover
-            ? "color-mix(in oklab, var(--muted), transparent 30%)"
-            : "color-mix(in oklab, var(--card), transparent 40%)",
-          border: "1px solid var(--border)",
-          borderLeft: `2px solid ${isActive ? "var(--primary)" : "var(--border)"}`,
-          borderRadius: 2,
-          boxSizing: "border-box",
-          overflow: "hidden",
-          transition: "background 0.2s",
+          transition: "transform 0.2s",
+          transform: hover ? "translateY(-1px)" : "none",
         }}
       >
-        <div className="flex items-center gap-2 mb-1.5">
-          <span
-            className="text-[10px] italic text-muted-foreground/80 whitespace-nowrap"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "0.16em" }}
-          >
-            № {study.no} · {study.field}
-          </span>
-        </div>
-        <h3
-          className="font-serif-cn text-[15px] font-semibold text-foreground m-0 mb-1.5 leading-[1.35]"
-          style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-        >
-          {study.title}
-        </h3>
-        <div
-          className="text-[11px] text-muted-foreground font-serif-cn italic leading-[1.5] mb-2"
-          style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-        >
-          {study.epigraph}
-        </div>
-        <div className="flex justify-between items-center text-[10.5px] text-muted-foreground font-mono">
-          <span>{formatSpan(study)}</span>
-          <StatusMark status={study.status} />
-        </div>
+        <StudyTimelineCard study={study} />
       </a>
     </>
   )
