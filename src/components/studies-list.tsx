@@ -421,7 +421,7 @@ export function StudiesList({ studies }: { studies: Study[] }) {
                 </div>
                 <div
                   className="font-serif-cn font-bold text-foreground"
-                  style={{ fontSize: 40, letterSpacing: "-0.01em", lineHeight: 1 }}
+                  style={{ fontSize: 28, letterSpacing: "-0.01em", lineHeight: 1 }}
                 >
                   专题
                 </div>
