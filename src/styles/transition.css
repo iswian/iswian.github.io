@@ -1,0 +1,61 @@
+/* Page transition animations with Astro View Transitions */
+
+/* Default fade transition */
+::view-transition-old(root) {
+  animation: fade-out 200ms ease-out;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 200ms ease-in;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade-in-up animation for page load */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.onload-animation {
+  opacity: 0;
+  animation: fade-in-up 320ms ease;
+  animation-fill-mode: forwards;
+  animation-delay: var(--content-delay, 0ms);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  .onload-animation {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

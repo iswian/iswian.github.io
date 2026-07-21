@@ -1,0 +1,197 @@
+---
+import type { CollectionEntry } from "astro:content"
+import { TableOfContents } from "./table-of-contents"
+
+interface Props {
+  post: CollectionEntry<"posts">
+  Content?: any
+  words?: number
+  minutes?: number
+}
+
+const { post, Content, words, minutes } = Astro.props as Props
+const hasSlot = Astro.slots.has("default")
+const data = post.data
+const formattedDate = data.published?.toISOString().slice(0, 10)
+const tags = data.tags ?? []
+const categoryLabel = data.category?.toString().trim() || "未分类"
+const categoryHref = `/?category=${encodeURIComponent(categoryLabel)}#home-main`
+const primaryTag = tags[0]
+const primaryTagHref = primaryTag ? `/?tag=${encodeURIComponent(primaryTag)}#home-main` : null
+---
+
+<main class="pt-24 pb-4" data-pagefind-body>
+  <div class="px-6">
+    <div class="max-w-3xl mx-auto">
+    <a
+      href="/#home-main"
+      class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8 group"
+    >
+      <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      返回首页
+    </a>
+
+    <header class="mb-8 xl:mb-12">
+      <h1
+        class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight mb-6 flex items-start gap-3"
+        data-pagefind-meta="title"
+      >
+        <span class="w-1.5 h-8 sm:h-10 shrink-0 bg-primary rounded-full mt-[0.15em] sm:mt-[0.3em]"></span>
+        <span class="text-pretty">{data.title}</span>
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground mb-6">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8M8 11h8m-6 4h6m2-9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2z" />
+          </svg>
+          {formattedDate}
+        </span>
+        <a href={categoryHref} class="inline-flex items-center gap-2 hover:text-primary transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h10" />
+          </svg>
+          {categoryLabel}
+        </a>
+        {primaryTagHref ? (
+          <a href={primaryTagHref} class="inline-flex items-center gap-2 hover:text-primary transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4H7z" />
+            </svg>
+            {primaryTag}
+          </a>
+        ) : (
+          <span class="flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3a4 4 0 0 0-4 4v10a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V7a4 4 0 0 0-4-4H7z" />
+            </svg>
+            未标签
+          </span>
+        )}
+      </div>
+
+      <div class="flex items-center justify-between py-4 border-y border-border">
+        <div class="flex items-center gap-4 text-sm text-muted-foreground">
+          <span class="flex items-center gap-1.5">
+            {words ? `${words} 字` : "——"}
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
+            </svg>
+            {minutes ? `${minutes} 分钟` : "——"}
+          </span>
+        </div>
+      </div>
+    </header>
+    </div>
+
+    {data.image && (
+      <div class="mb-10 overflow-hidden rounded-2xl border border-border/50 bg-muted/30 max-w-4xl mx-auto aspect-[16/9]">
+        <img
+          src={data.image}
+          alt={data.title}
+          class="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    )}
+
+    <div class="xl:hidden max-w-3xl mx-auto mb-4">
+      <details open class="group border border-border/60 bg-card/60 rounded-xl">
+        <summary class="list-none cursor-pointer px-4 py-3 flex items-center justify-between text-sm text-foreground">
+          <span class="inline-flex items-center gap-2">
+            <span class="w-1 h-4 bg-primary rounded-full"></span>
+            目录
+          </span>
+          <span class="text-muted-foreground transition-transform group-open:rotate-180">⌄</span>
+        </summary>
+        <div class="toc-scroll-container px-4 pb-3 pt-1 border-t border-border/50 max-h-72 overflow-y-auto overscroll-auto toc-scrollbar">
+          <TableOfContents showHeader={false} client:media="(max-width: 1279px)" />
+        </div>
+      </details>
+    </div>
+
+    <div class="relative max-w-3xl mx-auto">
+      <article
+        class="prose prose-neutral dark:prose-invert max-w-3xl mx-auto
+        prose-headings:font-serif prose-headings:font-bold
+        prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4 prose-h2:flex prose-h2:items-center prose-h2:gap-3
+        prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3
+        prose-h4:text-xl
+        prose-p:text-base prose-p:leading-8 prose-p:my-5 prose-p:text-foreground/90
+        prose-a:text-primary prose-a:no-underline prose-a:hover:underline
+        prose-blockquote:border-l-primary prose-blockquote:border-l-2 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-foreground/70 prose-blockquote:font-normal
+        prose-strong:text-foreground prose-strong:font-semibold
+        prose-code:text-primary prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
+        prose-pre:bg-secondary prose-pre:border prose-pre:border-border
+        prose-ol:text-foreground/90 prose-ul:text-foreground/90 prose-ol:my-5 prose-ul:my-5
+        prose-li:marker:text-primary prose-li:my-1.5
+        prose-table:text-sm
+        prose-th:bg-secondary prose-th:px-4 prose-th:py-2 prose-th:text-left prose-th:font-medium
+        prose-td:px-4 prose-td:py-2 prose-td:border-t prose-td:border-border
+        prose-hr:border-border prose-hr:my-8"
+      >
+        {hasSlot ? <slot /> : Content ? <Content /> : null}
+      </article>
+
+      <aside class="hidden xl:block absolute top-0 left-full pl-12 w-72 h-full">
+        <div class="sticky top-24">
+          <div class="toc-scroll-container max-h-[calc(100dvh-8rem)] overflow-y-auto overscroll-contain toc-scrollbar border border-border/60 bg-card/60 rounded-xl p-4">
+            <TableOfContents client:media="(min-width: 1280px)" />
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="mt-6 pt-4 border-t border-border max-w-3xl mx-auto">
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-sm text-muted-foreground">标签：</span>
+        <div class="flex flex-wrap gap-2">
+          {tags.length > 0 ? (
+            tags.map((tag: string) => (
+              <a
+                href={`/?tag=${encodeURIComponent(tag)}#home-main`}
+                class="px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                {tag}
+              </a>
+            ))
+          ) : (
+            <span class="px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full">未标签</span>
+          )}
+          <a
+            href={categoryHref}
+            class="px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
+          >
+            {categoryLabel}
+          </a>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a
+          href={data.prevSlug ? `/posts/${data.prevSlug}/` : "/"}
+          class="group p-4 border border-border rounded-xl hover:border-primary/30 transition-colors"
+        >
+          <span class="text-xs text-muted-foreground mb-1 block">上一篇</span>
+          <span class="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-1">
+            {data.prevTitle || "探索更多文章..."}
+          </span>
+        </a>
+        <a
+          href={data.nextSlug ? `/posts/${data.nextSlug}/` : "/"}
+          class="group p-4 border border-border rounded-xl hover:border-primary/30 transition-colors text-right"
+        >
+          <span class="text-xs text-muted-foreground mb-1 block">下一篇</span>
+          <span class="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-1">
+            {data.nextTitle || "探索更多文章..."}
+          </span>
+        </a>
+      </div>
+    </footer>
+  </div>
+</main>
