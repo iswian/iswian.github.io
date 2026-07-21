@@ -182,9 +182,6 @@ function QuietMode({
           <div
             className="font-serif italic text-[11px] text-muted-foreground uppercase"
             style={{ letterSpacing: 5 }}
-          >
-            Serendipity · №{" "}
-            {String(thoughts.length - idx).padStart(2, "0")} of {thoughts.length}
           </div>
           <div
             className="mt-3 font-mono text-[12px] text-muted-foreground"
@@ -305,12 +302,6 @@ function TimelineMode({
           <ModeSwitch mode="timeline" onChange={onSwitchMode} />
         </div>
         <div className="mb-3.5">
-          <div
-            className="font-mono text-[11px] uppercase text-muted-foreground mb-2.5"
-            style={{ letterSpacing: 3 }}
-          >
-            SERENDIPITY
-          </div>
           <div className="flex items-center gap-3">
             <div className="w-[3px] h-7 rounded-sm bg-primary" />
             <div className="font-serif text-[36px] font-bold leading-none tracking-tight text-foreground">
