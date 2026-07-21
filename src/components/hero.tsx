@@ -2,125 +2,13 @@
 
 import { useEffect, useRef, useState, useCallback } from "react"
 
-const phrases = [
-  { prefix: "探求 AI 的", highlight: "边界" },
-  { prefix: "追问金融的", highlight: "理性" },
-  { prefix: "分析社会的", highlight: "结构" },
-  { prefix: "记录跨学科", highlight: "洞见" },
-]
-
 export function Hero() {
   const [mounted, setMounted] = useState(false)
-  const [phraseIndex, setPhraseIndex] = useState(0)
-  const [displayText, setDisplayText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-  // Pause the typewriter loop when the hero is offscreen or the tab is hidden;
-  // otherwise the setTimeout chain keeps re-rendering React state while the
-  // user reads other parts of the home page.
-  const [isActive, setIsActive] = useState(true)
   const sectionRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  useEffect(() => {
-    const onVisibility = () => {
-      if (document.hidden) setIsActive(false)
-      else if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect()
-        setIsActive(rect.bottom > 0 && rect.top < window.innerHeight)
-      }
-    }
-    document.addEventListener("visibilitychange", onVisibility)
-
-    let observer: IntersectionObserver | null = null
-    if (sectionRef.current && typeof IntersectionObserver !== "undefined") {
-      observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            setIsActive(entry.isIntersecting && !document.hidden)
-          }
-        },
-        { threshold: 0 },
-      )
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      document.removeEventListener("visibilitychange", onVisibility)
-      observer?.disconnect()
-    }
-  }, [])
-
-  const getTypeSpeed = useCallback(() => {
-    // Random variation for natural typing rhythm (50-90ms)
-    return 50 + Math.random() * 40
-  }, [])
-
-  const getDeleteSpeed = useCallback(() => {
-    // Faster, more consistent deletion (25-40ms)
-    return 25 + Math.random() * 15
-  }, [])
-
-  const innerTimerRef = useRef<number | null>(null)
-
-  const typeWriter = useCallback(() => {
-    const currentPhrase = phrases[phraseIndex]
-    const fullText = currentPhrase.prefix + currentPhrase.highlight
-
-    if (innerTimerRef.current !== null) {
-      window.clearTimeout(innerTimerRef.current)
-      innerTimerRef.current = null
-    }
-
-    if (!isDeleting) {
-      if (displayText.length < fullText.length) {
-        innerTimerRef.current = window.setTimeout(() => {
-          setDisplayText(fullText.slice(0, displayText.length + 1))
-        }, getTypeSpeed())
-      } else {
-        innerTimerRef.current = window.setTimeout(() => setIsDeleting(true), 1500)
-      }
-    } else {
-      if (displayText.length > 0) {
-        innerTimerRef.current = window.setTimeout(() => {
-          setDisplayText(displayText.slice(0, -1))
-        }, getDeleteSpeed())
-      } else {
-        setIsDeleting(false)
-        setPhraseIndex((prev) => (prev + 1) % phrases.length)
-      }
-    }
-  }, [displayText, isDeleting, phraseIndex, getTypeSpeed, getDeleteSpeed])
-
-  useEffect(() => {
-    if (!mounted || !isActive) return
-    const timer = window.setTimeout(typeWriter, 50)
-    return () => {
-      window.clearTimeout(timer)
-      if (innerTimerRef.current !== null) {
-        window.clearTimeout(innerTimerRef.current)
-        innerTimerRef.current = null
-      }
-    }
-  }, [mounted, isActive, typeWriter])
-
-  const renderText = () => {
-    const currentPhrase = phrases[phraseIndex]
-    const prefixLength = currentPhrase.prefix.length
-
-    if (displayText.length <= prefixLength) {
-      return <span>{displayText}</span>
-    } else {
-      return (
-        <>
-          <span>{currentPhrase.prefix}</span>
-          <span className="text-primary">{displayText.slice(prefixLength)}</span>
-        </>
-      )
-    }
-  }
 
   const handleBrowseClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
@@ -141,14 +29,11 @@ export function Hero() {
           }`}
         >
           <p className="text-xs sm:text-sm tracking-[0.3em] text-muted-foreground uppercase mb-8">
-            金融学 · 社会学 · AI 大模型
+            金融数学 · 量化研究 · 衍生品定价
           </p>
 
-          <h1 className="font-sans text-[min(10.5vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[1.1] mb-8 min-h-[1.2em] whitespace-nowrap">
-            {renderText()}
-            <span
-              className="hero-cursor inline-block w-[0.08em] sm:w-[5px] md:w-[6px] lg:w-[7px] h-[0.9em] sm:h-[60px] md:h-[72px] lg:h-[96px] bg-foreground align-middle rounded-sm ml-2 -translate-y-1"
-            />
+          <h1 className="font-sans text-[min(10.5vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[1.1] mb-8">
+            抹茶iswian的博客
           </h1>
 
           <blockquote className="max-w-xl mx-auto mb-10">
