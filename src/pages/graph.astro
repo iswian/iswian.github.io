@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import SiteHeader from "@/components/site-header.astro"
+import { Footer } from "@/components/footer"
+import { PostGraph } from "@/components/post-graph"
+import { getPostGraphData } from "@/lib/post-graph"
+
+const title = "图谱 | 抹茶iswian的博客"
+const description = "像 Obsidian 一样查看文章之间的引用关系。"
+const graph = await getPostGraphData()
+---
+
+<BaseLayout {title} {description}>
+  <div class="min-h-screen bg-background">
+    <SiteHeader />
+    <main class="pt-24 pb-16">
+      <div class="mx-auto max-w-7xl px-5 md:px-8">
+        <PostGraph client:visible graph={graph} />
+      </div>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

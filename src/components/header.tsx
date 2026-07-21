@@ -10,6 +10,7 @@ const navItems: { name: string; href: string; external?: boolean }[] = [
   { name: "首页", href: "/#home-main" },
   { name: "时间线", href: "/timeline/" },
   { name: "碎碎念", href: "/thoughts/" },
+  { name: "图谱", href: "/graph/" },
   { name: "专题", href: "/studies/" },
   { name: "关于", href: "/about/" },
 ]
