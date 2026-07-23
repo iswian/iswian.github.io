@@ -1,0 +1,52 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import SiteHeader from "@/components/site-header.astro"
+import { Footer } from "@/components/footer"
+import { ThoughtsView } from "@/components/thoughts-view"
+import { MilkTeaTracker } from "@/components/milk-tea-tracker"
+import { getSortedThoughts, toThoughtMeta } from "@/lib/thoughts"
+
+const title = "日记 | 碎碎念与奶茶"
+const description = "零散的想法，以及一杯一杯积累起来的日常。"
+const thoughts = (await getSortedThoughts()).map((thought) => toThoughtMeta(thought))
+---
+
+<BaseLayout {title} {description}>
+  <div class="min-h-screen bg-background">
+    <SiteHeader />
+    <main class="pt-20">
+      <nav
+        class="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1 rounded-2xl border border-border/70 bg-background/85 p-1.5 text-sm shadow-lg shadow-foreground/5 backdrop-blur-xl transition duration-300 hover:scale-[1.03] md:bottom-auto md:left-[max(1.25rem,calc(50vw-31rem))] md:top-32 md:translate-x-0 md:flex-col md:items-stretch md:p-2"
+        aria-label="日记内容"
+      >
+        <a
+          href="#thoughts"
+          class="group flex items-center gap-2 rounded-xl px-3 py-2 font-medium text-foreground transition duration-200 hover:scale-105 hover:bg-primary/10 hover:text-primary md:min-w-24"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-primary transition duration-200 group-hover:scale-150"></span>
+          <span>碎碎念</span>
+        </a>
+        <a
+          href="#milk-tea"
+          class="group flex items-center gap-2 rounded-xl px-3 py-2 text-muted-foreground transition duration-200 hover:scale-105 hover:bg-primary/10 hover:text-primary md:min-w-24"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-muted-foreground/50 transition duration-200 group-hover:scale-150 group-hover:bg-primary"></span>
+          <span>奶茶记录</span>
+        </a>
+      </nav>
+
+      <section id="thoughts" class="scroll-mt-24">
+        <ThoughtsView client:idle thoughts={thoughts} />
+      </section>
+
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="h-px bg-border/70"></div>
+      </div>
+
+      <section id="milk-tea" class="scroll-mt-24">
+        <MilkTeaTracker client:load />
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

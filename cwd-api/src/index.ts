@@ -36,6 +36,13 @@ import { getLikeStats } from './api/admin/likeStats';
 import { getFeatureSettings, updateFeatureSettings } from './api/admin/featureSettings';
 import { getTelegramSettings, updateTelegramSettings, setupTelegramWebhook, testTelegramMessage } from './api/admin/telegramSettings';
 import { telegramWebhook } from './api/telegram/webhook';
+import {
+	listMilkTeaEntries,
+	createMilkTeaEntry,
+	updateMilkTeaEntry,
+	deleteMilkTeaEntry,
+	getDiarySession,
+} from './api/diary/milkTea';
 
 const app = new Hono<{ Bindings: Bindings }>();
 const VERSION = `${packageJson.version}`;
@@ -232,9 +239,14 @@ app.get('/api/config/comments', async (c) => {
 		return c.json({ message: e.message || '加载评论配置失败' }, 500);
 	}
 });
+app.get('/api/diary/milk-tea', listMilkTeaEntries);
 
 app.post('/admin/login', adminLogin);
 app.use('/admin/*', adminAuth);
+app.get('/admin/diary/session', getDiarySession);
+app.post('/admin/diary/milk-tea', createMilkTeaEntry);
+app.put('/admin/diary/milk-tea', updateMilkTeaEntry);
+app.delete('/admin/diary/milk-tea', deleteMilkTeaEntry);
 app.delete('/admin/comments/delete', deleteComment);
 app.get('/admin/comments/list', listComments);
 app.get('/admin/comments/export', exportComments);

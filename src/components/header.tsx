@@ -7,11 +7,11 @@ import { ThemeToggle } from "./theme-toggle"
 import { profile } from "@/data/profile"
 
 const navItems: { name: string; href: string; external?: boolean }[] = [
-  { name: "首页", href: "/#home-main" },
-  { name: "时间线", href: "/timeline/" },
-  { name: "碎碎念", href: "/thoughts/" },
-  { name: "图谱", href: "/graph/" },
-  { name: "专题", href: "/studies/" },
+  { name: "首页", href: "/" },
+  { name: "研究", href: "/#home-main" },
+  { name: "项目", href: "https://github.com/iswian", external: true },
+  { name: "知识库", href: "/studies/" },
+  { name: "日记", href: "/diary/" },
   { name: "关于", href: "/about/" },
 ]
 
