@@ -40,14 +40,17 @@ export function Footer() {
               <nav className="flex flex-col gap-3">
               {[
                 { name: "首页", href: "/" },
-                { name: "时间线", href: "/timeline/" },
-                { name: "图谱", href: "/graph/" },
-                { name: "专题", href: "/studies/" },
+                { name: "研究", href: "/#home-main" },
+                { name: "项目", href: "https://github.com/iswian", external: true },
+                { name: "知识库", href: "/studies/" },
+                { name: "日记", href: "/diary/" },
                 { name: "关于", href: "/about/" },
               ].map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noreferrer" : undefined}
                   className="text-muted-foreground text-sm hover:text-foreground transition-colors duration-200"
                 >
                   {item.name}
