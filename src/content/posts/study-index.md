@@ -58,8 +58,7 @@ tags: []
 - [稳健组合优化](投资组合/稳健组合优化.md) — BNP实战指南+DR风险平价：不确定性集选择（椭球vs盒子）、鲁棒参数设定、分布鲁棒风险平价
 - [SVM组合优化](投资组合/SVM组合优化.md) — Islip, Kwon & Kim：SVM+基数约束MVO联合建模，可解释性分离超平面
 - [GAN策略组合](投资组合/GAN策略组合.md) — Koshiyama et al.：cGAN生成交易策略校准与集成组合，579资产验证
-- [Quantum-HRL Agent](投资组合/Quantum-HRL.md) — 小组项目：量子定价+HRL分层决策+对抗训练，加密货币智能投资，Sharpe 4.91
-- [A股E2E-DRO](投资组合/A股E2E-DRO.md) — 汤圆的FYP项目：Costa & Iyengar (2023) E2E DRO框架复现至A股市场，20只蓝筹，线性模型下E2E优于PTO，DRO回撤控制最佳
+- [A股E2E-DRO](投资组合/A股E2E-DRO.md) — Costa & Iyengar (2023) E2E DRO框架复现至A股市场，20只蓝筹，线性模型下E2E优于PTO，DRO回撤控制最佳
 
 ## 🛠️ 量化实操
 

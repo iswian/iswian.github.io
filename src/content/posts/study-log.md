@@ -60,6 +60,5 @@ tags: []
 | 2026-05-11 | 拆出 | 投资组合/CNN+IV曲面收益预测.md | 从端到端组合构建.md中拆出独立页面，Kelly et al. (2023) CNN+IV Surface预测；更新index.md交叉引用 |
 | 2026-05-14 | 创建 | 因子选股/中金高频因子手册.md | 中金公司，79个L2高频因子8大类，筹码分布/拥挤度/动量等全解析 |
 | 2026-05-14 | 创建 | 择时/分层次出场策略.md | best_horizon/continue-exit/meta-labeling 三层出场框架 |
-| 2026-05-14 | 创建 | 投资组合/Quantum-HRL.md | 小组项目：CryptoWealthGuard，量子非谐振子定价+HRL分层决策+对抗环境训练的加密货币智能投资框架 |
-| 2026-05-14 | 创建 | 投资组合/A股E2E-DRO.md | 汤圆的FYP项目：Costa & Iyengar (2023) E2E DRO框架复现至A股，20只蓝筹，线性模型E2E优于PTO，DRO回撤控制最佳 |
+| 2026-05-14 | 创建 | 投资组合/A股E2E-DRO.md | Costa & Iyengar (2023) E2E DRO框架复现至A股，20只蓝筹，线性模型E2E优于PTO，DRO回撤控制最佳 |
 | 2026-05-14 | 创建 | 衍生品-期权/IV-alpha市场机制.md | IV因子alpha的底层市场机制：Gamma pressure/Skew flow/Dealer positioning/Regime transition 如何驱动 futures flow |
