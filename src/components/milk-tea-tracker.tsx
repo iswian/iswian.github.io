@@ -44,7 +44,10 @@ type Draft = Omit<MilkTeaEntry, "id" | "createdAt" | "price"> & {
 
 const STORAGE_KEY = "iswian-daily-milk-tea-v1"
 const TOKEN_KEY = "iswian-diary-admin-token"
-const API_BASE_URL = (import.meta.env.PUBLIC_CWD_API_BASE_URL ?? "").replace(/\/+$/, "")
+const API_BASE_URL = (
+  import.meta.env.PUBLIC_CWD_API_BASE_URL ??
+  (import.meta.env.PROD ? "https://api.iswian.cn" : "")
+).replace(/\/+$/, "")
 const WEEKDAY_LABELS = ["一", "", "三", "", "五", "", "日"]
 const SUGAR_OPTIONS = ["不另外加糖", "三分糖", "五分糖", "七分糖", "全糖"]
 const ICE_OPTIONS = ["热", "去冰", "少冰", "正常冰"]
