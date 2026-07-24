@@ -25,3 +25,13 @@ node_modules/
 # Python
 __pycache__/
 *.pyc
+
+# pnpm
+.pnpm-store/
+
+# workbuddy
+.workbuddy/
+
+# local config
+.npmrc
+cwd-api/.dev.vars
