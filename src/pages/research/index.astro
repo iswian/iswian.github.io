@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import SiteHeader from "@/components/site-header.astro"
+import { Footer } from "@/components/footer"
+
+const title = "研究 | 抹茶iswian的博客"
+const description = "尚在生长中的研究文章。"
+---
+
+<BaseLayout {title} {description}>
+  <div class="min-h-screen bg-background">
+    <SiteHeader />
+    <main class="px-6 pb-24 pt-32">
+      <section class="mx-auto max-w-6xl">
+        <div class="border-b border-border/70 pb-12">
+          <span class="text-xs font-medium uppercase tracking-[0.24em] text-primary">Research</span>
+          <h1 class="mt-4 font-serif-cn text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
+            研究
+          </h1>
+          <p class="mt-5 max-w-xl font-serif-cn text-base leading-8 text-muted-foreground">
+            这里会放真正形成体系的研究文章。现在还在整理和写作，暂不把已有文章填进来。
+          </p>
+        </div>
+
+        <div class="min-h-[420px]"></div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>

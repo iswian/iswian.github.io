@@ -56,7 +56,8 @@ function ResourceRow({ r, noBorder }: { r: ParsedResource; noBorder?: boolean })
   return (
     <article
       className={cn(
-        "grid items-start study-resource-row",
+        "group relative grid items-start study-resource-row",
+        r.href && "transition-colors hover:bg-muted/25",
         !noBorder && "border-b border-border/50",
       )}
       style={{
@@ -96,10 +97,20 @@ function ResourceRow({ r, noBorder }: { r: ParsedResource; noBorder?: boolean })
           </div>
         )}
         <h3
-          className="font-serif-cn font-bold text-foreground"
+          className="font-serif-cn font-bold text-foreground transition-colors group-hover:text-primary"
           style={{ fontSize: 19, margin: "0 0 4px", letterSpacing: "-0.005em", lineHeight: 1.35 }}
         >
-          {r.titleMain}
+          {r.href ? (
+            <a
+              href={r.href}
+              className="no-underline text-inherit after:absolute after:inset-0"
+              aria-label={`打开文章：${r.titleMain}`}
+            >
+              {r.titleMain}
+            </a>
+          ) : (
+            r.titleMain
+          )}
         </h3>
         {(r.byline || r.year) && (
           <div
@@ -234,15 +245,28 @@ function ByMediumView({ resources }: { resources: ParsedResource[] }) {
           {items.map((r) => (
             <article
               key={r.id}
-              className="grid items-start gap-6 border-b border-border/50 study-medium-row"
+              className={cn(
+                "group relative grid items-start gap-6 border-b border-border/50 study-medium-row",
+                r.href && "transition-colors hover:bg-muted/25",
+              )}
               style={{ padding: "16px 0", gridTemplateColumns: "1fr 140px" }}
             >
               <div>
                 <h3
-                  className="font-serif-cn font-bold text-foreground"
+                  className="font-serif-cn font-bold text-foreground transition-colors group-hover:text-primary"
                   style={{ fontSize: 17, margin: 0, lineHeight: 1.35 }}
                 >
-                  {r.titleMain}
+                  {r.href ? (
+                    <a
+                      href={r.href}
+                      className="no-underline text-inherit after:absolute after:inset-0"
+                      aria-label={`打开文章：${r.titleMain}`}
+                    >
+                      {r.titleMain}
+                    </a>
+                  ) : (
+                    r.titleMain
+                  )}
                 </h3>
                 {(r.byline || r.year) && (
                   <div
