@@ -1,5 +1,7 @@
 ---
-const apiBaseUrl = import.meta.env.PUBLIC_CWD_API_BASE_URL ?? ""
+const apiBaseUrl =
+  import.meta.env.PUBLIC_CWD_API_BASE_URL ??
+  (import.meta.env.PROD ? "https://api.iswian.cn" : "")
 const customCssUrl = import.meta.env.PUBLIC_CWD_CUSTOM_CSS_URL ?? ""
 const isEnabled = Boolean(apiBaseUrl)
 ---
