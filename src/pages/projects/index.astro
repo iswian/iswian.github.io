@@ -1,0 +1,123 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import SiteHeader from "@/components/site-header.astro"
+import { Footer } from "@/components/footer"
+
+const title = "项目 | 抹茶iswian的博客"
+const description = "正在进行与已经完成的项目展板。"
+
+const projects = [
+  {
+    no: "01",
+    title: "A股 E2E DRO 投资组合",
+    description: "在中国股票市场复现分布鲁棒的端到端投资组合框架，比较 E2E、PTO 与 DRO 的风险收益表现。",
+    status: "研究项目",
+    tags: ["Portfolio", "DRO", "A股"],
+    href: "/posts/a-share-e2e-dro/",
+    accent: "from-emerald-500/20 via-emerald-500/5 to-transparent",
+  },
+  {
+    no: "02",
+    title: "IV Surface 机器学习",
+    description: "从隐含波动率曲面提取 Level、Variation 与 Skew，探索期货收益预测及其市场机制。",
+    status: "持续迭代",
+    tags: ["Volatility", "Machine Learning", "Options"],
+    href: "/posts/iv-surface-ml-project-recap/",
+    accent: "from-sky-500/20 via-sky-500/5 to-transparent",
+  },
+  {
+    no: "03",
+    title: "CryptoWealthGuard",
+    description: "结合量子定价、分层强化学习与对抗训练的加密资产智能投资实验。",
+    status: "小组项目",
+    tags: ["HRL", "Quantum", "Crypto"],
+    href: "/posts/quantum-hrl/",
+    accent: "from-violet-500/20 via-violet-500/5 to-transparent",
+  },
+  {
+    no: "04",
+    title: "iswian 的个人网站",
+    description: "以 Astro 搭建的个人研究、知识库与日常记录空间，也是一项不断生长的长期项目。",
+    status: "长期维护",
+    tags: ["Astro", "Design", "Knowledge Base"],
+    href: "https://github.com/iswian/iswian.github.io",
+    external: true,
+    accent: "from-amber-500/20 via-amber-500/5 to-transparent",
+  },
+]
+---
+
+<BaseLayout {title} {description}>
+  <div class="min-h-screen bg-background">
+    <SiteHeader />
+    <main class="px-6 pb-28 pt-32">
+      <section class="mx-auto max-w-6xl">
+        <header class="mb-14 max-w-2xl">
+          <span class="text-xs font-medium uppercase tracking-[0.24em] text-primary">Project Board</span>
+          <h1 class="mt-4 font-serif-cn text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
+            项目展板
+          </h1>
+          <p class="mt-5 font-serif-cn text-base leading-8 text-muted-foreground">
+            一些已经动手做过的东西。它们未必已经完成，但都留下了可以继续生长的骨架。
+          </p>
+        </header>
+
+        <div class="project-board-grid grid gap-5">
+          {projects.map((project) => (
+            <a
+              href={project.href}
+              target={project.external ? "_blank" : undefined}
+              rel={project.external ? "noopener noreferrer" : undefined}
+              class="group relative min-h-80 overflow-hidden rounded-3xl border border-border/70 bg-card p-7 text-inherit no-underline shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-xl md:p-9"
+            >
+              <div class={`pointer-events-none absolute inset-0 bg-gradient-to-br ${project.accent}`}></div>
+              <div class="relative flex h-full flex-col">
+                <div class="flex items-start justify-between gap-6">
+                  <span class="font-mono text-xs tracking-[0.18em] text-muted-foreground">
+                    PROJECT {project.no}
+                  </span>
+                  <span class="rounded-full border border-border/70 bg-background/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
+                    {project.status}
+                  </span>
+                </div>
+
+                <h2 class="mt-12 max-w-md font-serif-cn text-2xl font-semibold leading-tight text-foreground transition group-hover:text-primary md:text-3xl">
+                  {project.title}
+                </h2>
+                <p class="mt-4 max-w-lg font-serif-cn text-sm leading-7 text-muted-foreground">
+                  {project.description}
+                </p>
+
+                <div class="mt-auto flex flex-wrap items-end justify-between gap-5 pt-9">
+                  <div class="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span class="rounded-full bg-background/65 px-3 py-1.5 text-[11px] text-muted-foreground backdrop-blur">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-lg text-foreground transition duration-300 group-hover:translate-x-1 group-hover:border-primary/40 group-hover:text-primary">
+                    ↗
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  .project-board-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 767px) {
+    .project-board-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

@@ -24,6 +24,7 @@ export type StudyStatus = "在读" | "沉淀中" | "暂搁" | "已结"
 
 export type ParsedResource = {
   id: string
+  href?: string
   type: string
   typeFull?: string // 中文全名 eyebrow（"论文" / "书籍" / "影片"），由 type 映射得出；与 type 重复时为 undefined
   title: string // 完整标题（保持原样，向后兼容）
@@ -287,9 +288,19 @@ function maxDate(items: { date: string }[]): string | undefined {
 
 // ────────────────────────── shaping ──────────────────────────
 
-function shape(entry: StudyEntry, idx: number): StudyData {
+function normalizeResourceTitle(title: string): string {
+  return title.normalize("NFKC").replace(/\s+/g, " ").trim()
+}
+
+function shape(entry: StudyEntry, idx: number, postHrefByTitle: Map<string, string>): StudyData {
   const body = typeof entry.body === "string" ? entry.body : ""
-  const trail = parseStudyBody(body)
+  const trail = parseStudyBody(body).map((item) => {
+    if (item.kind !== "resource") return item
+    return {
+      ...item,
+      href: postHrefByTitle.get(normalizeResourceTitle(item.titleMain)),
+    }
+  })
   const resources = trail.filter(
     (t): t is { kind: "resource" } & ParsedResource => t.kind === "resource",
   )
@@ -328,7 +339,17 @@ function shape(entry: StudyEntry, idx: number): StudyData {
 // ────────────────────────── public API ──────────────────────────
 
 export async function getAllStudies(): Promise<StudyData[]> {
-  const all = (await getCollection("studies")) as StudyEntry[]
+  const [allEntries, posts] = await Promise.all([
+    getCollection("studies"),
+    getCollection("posts"),
+  ])
+  const all = allEntries as StudyEntry[]
+  const postHrefByTitle = new Map(
+    posts.map((post) => [
+      normalizeResourceTitle(post.data.title),
+      `/posts/${post.slug}/`,
+    ]),
+  )
   // 按 started 升序（最早的开题排前 = No.01）
   const sorted = all.slice().sort((a: StudyEntry, b: StudyEntry) => {
     const pa = parseISO(a.data.started)
@@ -339,7 +360,9 @@ export async function getAllStudies(): Promise<StudyData[]> {
     if (pa.d !== pb.d) return pa.d - pb.d
     return a.slug.localeCompare(b.slug)
   })
-  return sorted.map((entry: StudyEntry, idx: number) => shape(entry, idx))
+  return sorted.map((entry: StudyEntry, idx: number) =>
+    shape(entry, idx, postHrefByTitle),
+  )
 }
 
 export async function getStudyBySlug(

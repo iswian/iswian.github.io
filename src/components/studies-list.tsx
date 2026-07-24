@@ -91,7 +91,7 @@ function IndexItem({ study }: { study: Study }) {
             {total > 0 && (
               <span className="font-serif-cn text-[12.5px] text-muted-foreground/70">
                 <span className="mr-1.5">·</span>
-                {total} 件
+                {total} 篇
               </span>
             )}
           </div>
@@ -549,7 +549,7 @@ export function StudiesList({ studies }: { studies: Study[] }) {
         {/* 元数据条 */}
         <div className="flex items-baseline gap-x-6 gap-y-2 sm:gap-8 flex-wrap pb-[22px] mb-9 border-b border-border">
           <Stat n={total} label="个专题" />
-          <Stat n={totalResources} label="件资源" />
+          <Stat n={totalResources} label="篇文章" />
           <span
             className="hidden sm:inline-block ml-auto text-[11px] text-muted-foreground/80 italic uppercase"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", letterSpacing: "0.16em" }}
