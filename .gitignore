@@ -35,3 +35,5 @@ __pycache__/
 # local config
 .npmrc
 cwd-api/.dev.vars
+.vercel
+.env*
