@@ -29,7 +29,7 @@ export function Hero() {
           }`}
         >
           <p className="text-xs sm:text-sm tracking-[0.3em] text-muted-foreground uppercase mb-7">
-            金融数学 · 量化研究 · 衍生品定价
+            边吃饭 · 边优化人生
           </p>
 
           <h1 className="font-serif-cn text-[min(9vw,2.6rem)] sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground leading-[1.2] mb-4">
