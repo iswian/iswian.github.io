@@ -51,10 +51,10 @@ function ModeSwitch({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => voi
         "timeline",
         "时间轴",
         <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-          <circle cx="3" cy="8" r="1.5" fill="currentColor" />
-          <circle cx="9" cy="8" r="1.5" />
-          <circle cx="13.5" cy="8" r="1.2" />
-          <path d="M2 8h12" />
+          <circle cx="8" cy="3" r="1.5" fill="currentColor" />
+          <circle cx="8" cy="8" r="1.5" />
+          <circle cx="8" cy="13" r="1.2" />
+          <path d="M8 2v12" />
         </svg>,
       )}
     </div>
@@ -306,7 +306,7 @@ function StudyTimelineCard({
   )
 }
 
-function TimelineView({ studies }: { studies: Study[] }) {
+function HorizontalTimelineViewLegacy({ studies }: { studies: Study[] }) {
   const sorted = useMemo(
     () => [...studies].sort((a, b) => parseMonth(a.started) - parseMonth(b.started)),
     [studies],
@@ -490,6 +490,15 @@ function TimelineNode({
       </a>
     </>
   )
+}
+
+function TimelineView({ studies }: { studies: Study[] }) {
+  const sorted = useMemo(
+    () => [...studies].sort((a, b) => parseMonth(a.started) - parseMonth(b.started)),
+    [studies],
+  )
+
+  return <CollapsedTimelineView studies={sorted} />
 }
 
 export function StudiesList({ studies }: { studies: Study[] }) {

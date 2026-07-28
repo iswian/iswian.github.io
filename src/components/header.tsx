@@ -64,7 +64,7 @@ export function Header() {
             <div className="w-8 h-8 rounded-full overflow-hidden transition-transform duration-300 group-hover:scale-105">
               <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover rounded-full" />
             </div>
-            <span className="text-foreground font-medium tracking-tight hidden sm:block">抹茶iswian的博客</span>
+            <span className="text-foreground font-medium tracking-tight hidden sm:block">iswian</span>
           </a>
 
           {/* Center: Navigation */}

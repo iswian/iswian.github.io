@@ -23,8 +23,8 @@ const allArticles = allPosts.map((post) => toPostMeta(post))
 const sidebarMeta = buildSidebarMeta(allArticles)
 const title =
   currentPage > 1
-    ? `抹茶iswian的博客 · 第 ${currentPage} 页`
-    : "抹茶iswian的博客"
+    ? `iswian · 第 ${currentPage} 页`
+    : "iswian"
 ---
 
 <BaseLayout {title} {description}>

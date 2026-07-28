@@ -23,7 +23,7 @@ export const profile: {
   avatar: string
   links: ProfileLink[]
 } = {
-  name: "抹茶iswian",
+  name: "iswian",
   bio: "量化韭菜，但很努力",
   avatar: "/avatar.jpg",
   links: [

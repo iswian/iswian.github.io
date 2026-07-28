@@ -21,20 +21,24 @@ export function Hero() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative min-h-[90vh] flex items-center justify-center px-6 bg-muted/30">
-      <div className="max-w-4xl mx-auto text-center">
+    <section ref={sectionRef} className="yellow-dot-grid relative min-h-[82vh] flex items-center justify-center px-6">
+      <div className="max-w-3xl mx-auto text-center">
         <div
           className={`transition-all duration-1000 ease-out ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <p className="text-xs sm:text-sm tracking-[0.3em] text-muted-foreground uppercase mb-8">
+          <p className="text-xs sm:text-sm tracking-[0.3em] text-muted-foreground uppercase mb-7">
             金融数学 · 量化研究 · 衍生品定价
           </p>
 
-          <h1 className="font-sans text-[min(10.5vw,3rem)] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[1.1] mb-8">
-            抹茶iswian的博客
+          <h1 className="font-serif-cn text-[min(9vw,2.6rem)] sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground leading-[1.2] mb-4">
+            先活着，再优化
           </h1>
+
+          <p className="mb-9 font-serif-cn text-base tracking-[0.18em] text-muted-foreground sm:text-lg">
+            在原地海枯石烂
+          </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
