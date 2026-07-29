@@ -7,6 +7,12 @@ type TrackVisitBody = {
 	postUrl?: string;
 };
 
+async function ensurePageStatsTable(env: Bindings) {
+	await env.CWD_DB.prepare(
+		'CREATE TABLE IF NOT EXISTS page_stats (id INTEGER PRIMARY KEY AUTOINCREMENT, post_slug TEXT UNIQUE NOT NULL, post_title TEXT, post_url TEXT, pv INTEGER NOT NULL DEFAULT 0, last_visit_at INTEGER, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL)'
+	).run();
+}
+
 function extractDomain(source: string | null | undefined): string | null {
 	if (!source) {
 		return null;
@@ -38,9 +44,7 @@ export const trackVisit = async (c: Context<{ Bindings: Bindings }>) => {
 			return c.json({ message: 'postSlug is required' }, 400);
 		}
 
-		await c.env.CWD_DB.prepare(
-			'CREATE TABLE IF NOT EXISTS page_stats (id INTEGER PRIMARY KEY AUTOINCREMENT, post_slug TEXT UNIQUE NOT NULL, post_title TEXT, post_url TEXT, pv INTEGER NOT NULL DEFAULT 0, last_visit_at INTEGER, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL)'
-		).run();
+		await ensurePageStatsTable(c.env);
 
 		await c.env.CWD_DB.prepare(
 			'CREATE TABLE IF NOT EXISTS page_visit_daily (id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT NOT NULL, domain TEXT, count INTEGER NOT NULL DEFAULT 0, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL)'
@@ -62,6 +66,7 @@ export const trackVisit = async (c: Context<{ Bindings: Bindings }>) => {
 			.bind(rawPostSlug)
 			.first<{ id: number; pv: number }>();
 
+		let currentPv = 1;
 		if (!existing) {
 			await c.env.CWD_DB.prepare(
 				'INSERT INTO page_stats (post_slug, post_title, post_url, pv, last_visit_at, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)'
@@ -78,6 +83,7 @@ export const trackVisit = async (c: Context<{ Bindings: Bindings }>) => {
 				.run();
 		} else {
 			const newPv = (existing.pv || 0) + 1;
+			currentPv = newPv;
 			await c.env.CWD_DB.prepare(
 				'UPDATE page_stats SET post_title = ?, post_url = ?, pv = ?, last_visit_at = ?, updated_at = ? WHERE id = ?'
 			)
@@ -128,9 +134,28 @@ export const trackVisit = async (c: Context<{ Bindings: Bindings }>) => {
 				.run();
 		}
 
-		return c.json({ success: true });
+		return c.json({ success: true, pv: currentPv });
 	} catch (e: any) {
 		return c.json({ message: e.message || '记录访问数据失败' }, 500);
 	}
 };
 
+export const getVisitCount = async (c: Context<{ Bindings: Bindings }>) => {
+	try {
+		const postSlug = (c.req.query('post_slug') || '').trim();
+		if (!postSlug) {
+			return c.json({ message: 'post_slug is required' }, 400);
+		}
+
+		await ensurePageStatsTable(c.env);
+		const row = await c.env.CWD_DB.prepare(
+			'SELECT pv FROM page_stats WHERE post_slug = ?'
+		)
+			.bind(postSlug)
+			.first<{ pv: number }>();
+
+		return c.json({ pv: row?.pv || 0 });
+	} catch (e: any) {
+		return c.json({ message: e.message || '获取访问次数失败' }, 500);
+	}
+};

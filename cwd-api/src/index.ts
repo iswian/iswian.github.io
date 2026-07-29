@@ -27,7 +27,7 @@ import { setAdminEmail } from './api/admin/setAdminEmail';
 import { testEmail } from './api/admin/testEmail';
 import { getStats } from './api/admin/getStats';
 import { getDomains } from './api/admin/getDomains';
-import { trackVisit } from './api/public/trackVisit';
+import { getVisitCount, trackVisit } from './api/public/trackVisit';
 import { getVisitOverview, getVisitPages } from './api/admin/visitAnalytics';
 import { getLikeStatus, likePage } from './api/public/like';
 import { likeComment } from './api/public/likeComment';
@@ -223,6 +223,7 @@ app.get('/', (c) => {
 app.get('/api/comments', getComments);
 app.post('/api/comments', postComment);
 app.post('/api/verify-admin', verifyAdminKey);
+app.get('/api/analytics/visit', getVisitCount);
 app.post('/api/analytics/visit', trackVisit);
 app.get('/api/like', getLikeStatus);
 app.post('/api/like', likePage);
