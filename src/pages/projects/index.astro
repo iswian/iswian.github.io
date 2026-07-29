@@ -4,7 +4,7 @@ import SiteHeader from "@/components/site-header.astro"
 import { Footer } from "@/components/footer"
 
 const title = "项目 | iswian"
-const description = "项目仍在幕后生长，暂不公开具体内容。"
+const description = "公开研究脉络与思考过程，策略实现细节留在本地。"
 ---
 
 <BaseLayout {title} {description}>
@@ -18,7 +18,7 @@ const description = "项目仍在幕后生长，暂不公开具体内容。"
             项目
           </h1>
           <p class="mt-5 font-serif-cn text-base leading-8 text-muted-foreground">
-            这里暂时不摆项目细节。毕竟策略不是自助餐，先让它们在本地好好长大。
+            这里分享研究是怎么长出来的，但不提供一键复刻套餐。毕竟策略不是自助餐。
           </p>
         </header>
 
@@ -26,14 +26,38 @@ const description = "项目仍在幕后生长，暂不公开具体内容。"
           <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent"></div>
           <div class="relative">
             <span class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Private drafts
+              Public boundary
             </span>
             <h2 class="mt-7 font-serif-cn text-2xl font-semibold text-foreground md:text-3xl">
-              正在闭关，谢绝剧透
+              过程可以看，配方先不端
             </h2>
             <p class="mt-4 max-w-xl font-serif-cn text-sm leading-7 text-muted-foreground">
-              能公开、经得住复现的部分，以后再端上来；其余内容继续安静地待在硬盘里。
+              网站公开研究叙事与阶段成果；能直接复现、部署或交易的部分，继续安静地待在硬盘里。
             </p>
+
+            <div class="mt-9 grid gap-5 md:grid-cols-2">
+              <section class="rounded-2xl border border-primary/20 bg-primary/5 p-5">
+                <h3 class="font-serif-cn text-base font-semibold text-foreground">可以公开</h3>
+                <ul class="mt-4 space-y-2 font-serif-cn text-sm text-muted-foreground">
+                  <li>✓ 项目背景</li>
+                  <li>✓ 方法框架</li>
+                  <li>✓ 结果图</li>
+                  <li>✓ 学习笔记</li>
+                  <li>✓ 思考过程</li>
+                </ul>
+              </section>
+
+              <section class="rounded-2xl border border-border/70 bg-background/70 p-5">
+                <h3 class="font-serif-cn text-base font-semibold text-foreground">暂不公开</h3>
+                <ul class="mt-4 space-y-2 font-serif-cn text-sm text-muted-foreground">
+                  <li>× 完整代码</li>
+                  <li>× 参数优化细节</li>
+                  <li>× 数据接口</li>
+                  <li>× 私有 pipeline</li>
+                  <li>× 最终策略组合</li>
+                </ul>
+              </section>
+            </div>
           </div>
         </div>
       </section>
