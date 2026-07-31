@@ -13,10 +13,11 @@ const elementId = `article-visit-${slug.replace(/[^a-zA-Z0-9_-]/g, "-")}`
 
 <span
   id={elementId}
-  class="inline-flex items-center gap-1.5"
+  class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-primary/8 px-2.5 py-1 font-mono tabular-nums text-foreground"
   data-api-base-url={apiBaseUrl}
   data-post-slug={slug}
   data-post-title={title}
+  aria-label="文章访问次数"
 >
   <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path
@@ -27,7 +28,7 @@ const elementId = `article-visit-${slug.replace(/[^a-zA-Z0-9_-]/g, "-")}`
     />
     <circle cx="12" cy="12" r="2.5" stroke-width="2" />
   </svg>
-  <span data-visit-value>—</span>
+  <span data-visit-value>0</span>
   <span>次访问</span>
 </span>
 
@@ -72,7 +73,7 @@ const elementId = `article-visit-${slug.replace(/[^a-zA-Z0-9_-]/g, "-")}`
         const payload = await response.json()
         const pv = Number(payload?.pv)
         if (Number.isFinite(pv) && pv >= 0) {
-          valueElement.textContent = String(pv)
+          valueElement.textContent = Math.trunc(pv).toLocaleString("en-US")
           if (!alreadyCounted) sessionStorage.setItem(sessionKey, "true")
         }
       } catch (error) {

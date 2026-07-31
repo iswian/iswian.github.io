@@ -13,6 +13,21 @@ async function ensurePageStatsTable(env: Bindings) {
 	).run();
 }
 
+async function getCombinedPostPv(env: Bindings, postSlug: string) {
+	const escapedSlug = postSlug
+		.replace(/\\/g, '\\\\')
+		.replace(/%/g, '\\%')
+		.replace(/_/g, '\\_');
+	const legacyUrlPattern = `%/posts/${escapedSlug}/%`;
+	const row = await env.CWD_DB.prepare(
+		"SELECT COALESCE(SUM(pv), 0) AS pv FROM page_stats WHERE post_slug = ? OR post_slug LIKE ? ESCAPE '\\'"
+	)
+		.bind(postSlug, legacyUrlPattern)
+		.first<{ pv: number }>();
+
+	return row?.pv || 0;
+}
+
 function extractDomain(source: string | null | undefined): string | null {
 	if (!source) {
 		return null;
@@ -134,7 +149,8 @@ export const trackVisit = async (c: Context<{ Bindings: Bindings }>) => {
 				.run();
 		}
 
-		return c.json({ success: true, pv: currentPv });
+		const combinedPv = await getCombinedPostPv(c.env, rawPostSlug);
+		return c.json({ success: true, pv: combinedPv || currentPv });
 	} catch (e: any) {
 		return c.json({ message: e.message || '记录访问数据失败' }, 500);
 	}
@@ -148,13 +164,8 @@ export const getVisitCount = async (c: Context<{ Bindings: Bindings }>) => {
 		}
 
 		await ensurePageStatsTable(c.env);
-		const row = await c.env.CWD_DB.prepare(
-			'SELECT pv FROM page_stats WHERE post_slug = ?'
-		)
-			.bind(postSlug)
-			.first<{ pv: number }>();
-
-		return c.json({ pv: row?.pv || 0 });
+		const pv = await getCombinedPostPv(c.env, postSlug);
+		return c.json({ pv });
 	} catch (e: any) {
 		return c.json({ message: e.message || '获取访问次数失败' }, 500);
 	}
