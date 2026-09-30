@@ -1,5 +1,5 @@
 export type ExternalProfileLinkType = "qq" | "music" | "github"
-export type ProfileLinkType = ExternalProfileLinkType | "wechat"
+export type ProfileLinkType = ExternalProfileLinkType
 
 export interface ExternalProfileLink {
   type: ExternalProfileLinkType
@@ -7,15 +7,7 @@ export interface ExternalProfileLink {
   url: string
 }
 
-export interface QrProfileLink {
-  type: "wechat"
-  name: string
-  qrImage: string
-  qrAlt: string
-  label: string
-}
-
-export type ProfileLink = ExternalProfileLink | QrProfileLink
+export type ProfileLink = ExternalProfileLink
 
 export const profile: {
   name: string
@@ -31,13 +23,6 @@ export const profile: {
       type: "github",
       name: "GitHub",
       url: "https://github.com/iswian",
-    },
-    {
-      type: "wechat",
-      name: "WeChat",
-      qrImage: "/images/contact/wechat-qr.png",
-      qrAlt: "微信二维码",
-      label: "扫码添加微信",
     },
   ],
 }
