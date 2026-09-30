@@ -3,12 +3,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
 import SiteHeader from "@/components/site-header.astro"
 import { Footer } from "@/components/footer"
 import { ThoughtsView } from "@/components/thoughts-view"
-import { MilkTeaTracker } from "@/components/milk-tea-tracker"
 import ArticleVisitCount from "@/components/ArticleVisitCount.astro"
 import { getSortedThoughts, toThoughtMeta } from "@/lib/thoughts"
 
-const title = "日记 | 碎碎念与奶茶"
-const description = "零散的想法，以及一杯一杯积累起来的日常。"
+const title = "日记 | 碎碎念"
+const description = "零散的想法与日常。"
 const thoughts = (await getSortedThoughts()).map((thought) => toThoughtMeta(thought))
 ---
 
@@ -31,25 +30,10 @@ const thoughts = (await getSortedThoughts()).map((thought) => toThoughtMeta(thou
           <span class="h-1.5 w-1.5 rounded-full bg-primary transition duration-200 group-hover:scale-150 md:h-2 md:w-2"></span>
           <span>碎碎念</span>
         </a>
-        <a
-          href="#milk-tea"
-          class="group flex items-center gap-3 rounded-xl px-3 py-2 text-muted-foreground transition duration-200 hover:scale-105 hover:bg-primary/10 hover:text-primary md:min-w-32 md:rounded-2xl md:px-4 md:py-3"
-        >
-          <span class="h-1.5 w-1.5 rounded-full bg-muted-foreground/50 transition duration-200 group-hover:scale-150 group-hover:bg-primary md:h-2 md:w-2"></span>
-          <span>奶茶记录</span>
-        </a>
       </nav>
 
       <section id="thoughts" class="scroll-mt-24">
         <ThoughtsView client:idle thoughts={thoughts} />
-      </section>
-
-      <div class="mx-auto max-w-6xl px-6">
-        <div class="h-px bg-border/70"></div>
-      </div>
-
-      <section id="milk-tea" class="scroll-mt-24">
-        <MilkTeaTracker client:load />
       </section>
     </main>
     <Footer />
