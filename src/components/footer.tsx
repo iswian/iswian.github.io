@@ -39,8 +39,7 @@ export function Footer() {
               <nav className="flex flex-col gap-3">
               {[
                 { name: "首页", href: "/" },
-                { name: "研究", href: "/research/" },
-                { name: "项目", href: "/projects/" },
+                { name: "研究与项目", href: "/research/" },
                 { name: "知识库", href: "/studies/" },
                 { name: "日记", href: "/diary/" },
                 { name: "关于", href: "/about/" },
