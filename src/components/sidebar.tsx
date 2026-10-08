@@ -61,7 +61,6 @@ export function Sidebar({
             className="w-full h-full object-cover"
           />
         </div>
-        <h3 className="font-serif text-xl font-medium text-foreground mb-1">{profile.name}</h3>
         <div className="w-8 h-0.5 bg-primary mx-auto mb-3" />
         <p className="text-sm text-muted-foreground leading-relaxed mb-4">{profile.bio}</p>
 

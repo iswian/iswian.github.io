@@ -70,7 +70,7 @@ export default function AboutPage() {
                 一个还在学习的量化练习生，奶茶因子的忠实多头。<br />
               </blockquote>
               <p>
-                你好，我是 iswian。
+                你好，欢迎来这里看看。
               </p>
               <p>
                 本职是金融数学学生，日常在随机过程里算期望，在回测系统里 debug，在

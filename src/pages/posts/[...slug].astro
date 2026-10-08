@@ -49,7 +49,7 @@ const description = buildMetaDescription(
   post.data.title,
   post.data.encrypted ?? false,
 )
-const title = `${post.data.title} | iswian`
+const title = `${post.data.title} | 随记`
 const publishedIso = post.data.published ? new Date(post.data.published).toISOString() : ""
 const updatedIso = post.data.updated ? new Date(post.data.updated).toISOString() : ""
 const category = (post.data.category ?? "").toString().trim()
@@ -70,7 +70,7 @@ const jsonLd = {
   },
   publisher: {
     "@type": "Organization",
-    name: "iswian",
+    name: "随记",
   },
   keywords: tags.length ? tags.join(", ") : undefined,
   articleSection: category || undefined,
